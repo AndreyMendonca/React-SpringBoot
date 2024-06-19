@@ -10,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,12 +29,15 @@ public class Client implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty(message = "Campo nome é obrigatorio")
 	@Column(length = 50, nullable = false)
 	private String name;
 	
+	@NotNull(message = "Campo aniversario é obrigatorio")
 	@Column(nullable = false)
 	private LocalDate birthday;
 	
+	@NotNull(message = "Campo saldo é obrigatorio")
 	@Column(nullable = false, precision = 10, scale = 2)
 	private BigDecimal amount;
 
